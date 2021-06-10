@@ -5,11 +5,13 @@ class Player {
     this.wins = wins;
   }
 
-  saveWinsToStorage(wins) {
+  saveWinsToStorage(wins, turn) {
+    
+    // save wins and the next player whose turn it is
 
   }
 
-  retrieveWinsFromStorage(name) {
-
+  retrieveWinsFromStorage() {
+    // retrieve wins and the next player whose turn it is
   }
 };
