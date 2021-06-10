@@ -33,7 +33,7 @@ aside {
   background: linear-gradient(#7BE1B7, #7BE1D9, #7BD5E1, #7BC1E1);
 }
 
-p {
+.player-icon {
   font-size: 6vh;
   margin: 45px 0px;
 }
@@ -71,6 +71,13 @@ h1 {
   align-items: center;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .column1,
 .column2 {
   border-right: 8px solid #7BC1E1;
@@ -82,6 +89,10 @@ h1 {
 }
 
 .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 10vh;
-  padding: 30px;
+  height: 17vh;
+  width: 17vh;
 }
