@@ -15,25 +15,23 @@ class Game {
   }
 
   followingGameBoard(whichSection, whichPlayer) {
-    // trackTurns();
-    // Update with each turn
+    // Update "tally" with each turn
     // call assessWinning(currentBoard);
-    // if assessWinning returns True, invoke callingAWin passing winning Player as argument
-    // if assessWinning returns false, then trackTurns();
-    // When to call a draw
+    // trackTurns();
   }
 
   assessWinning(currentBoard) {
     // set winning conditions to check against:
     // Winning Combos: (1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 4, 7), (2, 5, 8), (3, 6, 9), (1, 5, 9), (3, 5, 7)
-    // Return true with winning Player or False
+    // Invoke callingAWin passing the winning Player or
+    // evalutes to False, invoke turnTracker
+    // or, invoke callingADraw if game has no more winning moves possible
   }
 
   callingAWin(winningPlayer) {
     // Change <h1> to show winning player
     // Add one win to the winning player's count. (winningPlayer.wins++;)
     // invoke the saveWinsToStorage for the winning Player
-    //invoke trackTurns
     //Update localStorage with whose turn it is
   }
 
