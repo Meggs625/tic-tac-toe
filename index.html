@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <title>🐷 Tic Tac Toe! 🐯</title>
-</head>
-<body>
-  <aside>
-    <p>🐷</p>
-    <h2>0 wins</h2>
-  </aside>
-  <main>
-    <h1><!--Player's turn displays here--></h1>
-    <section class="game-grid">
-      <section class="row1">
-        <section class="item item1">🐯</section>
-        <section class="item item2">🐷</section>
-        <section class="item item3">🐯</section>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>🐷 Tic Tac Toe! 🐯</title>
+  </head>
+  <body>
+    <aside>
+      <p>🐷</p>
+      <h2>0 Wins</h2>
+    </aside>
+    <main>
+      <h1>It's 's turn</h1>
+      <section class="game-grid">
+        <section class="column1">
+          <section class="item item1" id="item1">🐯</section>
+          <section class="item item2" id="item2">🐷</section>
+          <section class="item item3" id="item3">🐯</section>
+        </section>
+        <section class="column2">
+          <section class="item item4" id="item4">🐷</section>
+          <section class="item item5" id="item5">🐯</section>
+          <section class="item item6" id="item6">🐷</section>
+        </section>
+        <section class="column3">
+          <section class="item item7" id="item7">🐯</section>
+          <section class="item item8" id="item8">🐷</section>
+          <section class="item item9" id="item9">🐯</section>
+        </section>
       </section>
-      <section class="row2">
-        <section class="item item4">🐷</section>
-        <section class="item item5">🐯</section>
-        <section class="item item6">🐷</section>
-      </section>
-      <section class="row3">
-        <section class="item item7">🐯</section>
-        <section class="item item8">🐷</section>
-        <section class="item item9">🐯</section>
-      </section>
-    </section>
-  <aside>
-    <p>🐯</p>
-    <h2>0 wins</h2>
-  </aside>
-  </main>
-</body>
+    <aside>
+      <p>🐯</p>
+      <h2>0 Wins</h2>
+    </aside>
+    </main>
+  <script type="text/javascript" src="Game.js"></script>
+  <script type="text/javascript" src="Player.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
