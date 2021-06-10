@@ -5,13 +5,15 @@ class Player {
     this.wins = wins;
   }
 
-  saveWinsToStorage(wins, turn) {
-    
-    // save wins and the next player whose turn it is
-
+  saveWinsToStorage() {
+    var currentWins = JSON.stringify(this.wins);
+    var thePlayer = JSON.stringify(this.name);
+    localStorage.setItem(thePlayer, currentWins);
   }
 
   retrieveWinsFromStorage() {
-    // retrieve wins and the next player whose turn it is
+    var thePlayer = JSON.stringify(this.name);
+    var parsedWins = JSON.parse(localStorage.getItem(thePlayer));
+    this.wins = parsedWins;
   }
 };

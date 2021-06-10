@@ -8,11 +8,10 @@ class Game {
   trackTurns() {
     this.turn++;
     if (this.turn % 2 === 0) {
-      return player2.icon;
+      return player2.name;
     } else {
-      return player1.icon;
+      return player1.name;
     }
-    // localStorage save point
   }
 
   followingGameBoard(whichSection, whichPlayer) {
@@ -31,14 +30,18 @@ class Game {
 
   callingAWin(winningPlayer) {
     // Change <h1> to show winning player
-    // Add one win to the winning player's count.
+    // Add one win to the winning player's count. (winningPlayer.wins++;)
     // invoke the saveWinsToStorage for the winning Player
+    //invoke trackTurns
+    //Update localStorage with whose turn it is
   }
 
   callingADraw() {
     // invoked with a certain condition in the assessWinning method
     // none of the winningConditions are possible
     // return "It's a Draw!" in <h1>
+    //invoke trackTurns
+    //Update localStorage with whose turn it is
   }
 
   setNewGame() {
