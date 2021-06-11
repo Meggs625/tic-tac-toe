@@ -8,7 +8,7 @@ var theGame;
 //Event Listeners
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
-  testFunctionality(event)});
+  populateSection(event)});
 //Functions
 function loadGame() {
   var pig = new Player('Pig', '🐷');
@@ -22,11 +22,9 @@ function loadPreviousWins(pig, tiger) {
   tiger.retrieveWinsFromStorage();
 }
 
-function testFunctionality(event) {
-  for (var i = 0; i < winningConditions.length; i++){
-  if (!winningConditions[1][event.target.id]) {
-    sectionFive.innerHTML = theGame.trackTurns().token;
-    console.log(winningConditions[1][event.target.id]);
+function populateSection(event) {
+  var playerName = theGame.trackTurns().name;
+  if (!gameSectionStatus[event.target.id])
+      theGame.updateGameBoard(event.target.id, playerName);
+      // update innderHTML of the right Section to the player's token
   }
-  }
-}
