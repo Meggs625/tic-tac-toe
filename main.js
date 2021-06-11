@@ -1,6 +1,9 @@
 //Query Selectors
   var gameBoard = document.getElementById('board');
-  var sectionFive = document.getElementById('item5');
+  var playerOnesWins = document.getElementById('player-one');
+  var playerTwosWins = document.getElementById('player-two');
+  var whoseTurn = document.getElementById('whose-turn');
+
 
 //Global variables
 var theGame;
@@ -10,6 +13,7 @@ var theGame;
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
   populateSection(event)});
+
 //Functions
 function loadGame() {
   var pig = new Player('Pig', '🐷');
@@ -17,6 +21,8 @@ function loadGame() {
   theGame = new Game(pig, tiger);
   loadPreviousWins(pig, tiger);
   loadCurrentTurn();
+  displayStoredWins();
+  displayTurn();
 }
 
 function loadPreviousWins(pig, tiger) {
@@ -31,6 +37,15 @@ function loadCurrentTurn() {
   } else {
     theGame.turn = parseInt(parsedTurns);
   }
+}
+
+function displayStoredWins() {
+  playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
+  playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
+}
+
+function displayTurn() {
+  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s turn!'`;
 }
 
 function populateSection(event) {
