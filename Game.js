@@ -16,6 +16,7 @@ class Game {
 
   updateGameBoard(sectionId, playerName) {
     console.log(gameSectionStatus);
+    console.log(this.pig.wins)
     gameSectionStatus[sectionId] = playerName;
     this.evaluateRows(playerName);
   }
@@ -102,7 +103,7 @@ class Game {
   //
   setNewGame() {
     this.storeWhoseTurn();
-    
+    location.reload();
 
     // removing all added items,
     // showing the updated # of wins for the players - retrievedFromStorage
