@@ -6,7 +6,6 @@ class Game {
   }
 
   trackTurns() {
-    // this.turn++;
     if (this.turn % 2 === 0) {
       return this.tiger;
     } else {
@@ -80,12 +79,14 @@ class Game {
 
   callAWin(playerName) {
     if (playerName === this.pig.name) {
+      console.log('Pig wins!')
       this.pig.wins++;
       this.pig.saveWinsToStorage();
       this.turn++;
       this.setNewGame();
     // invoke DOM to update <h1> with winningPlayer's name
   } else {
+      console.log('Tiger wins!')
       this.tiger.wins++;
       this.tiger.saveWinsToStorage();
       this.turn++;

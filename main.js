@@ -27,9 +27,9 @@ function loadPreviousWins(pig, tiger) {
 function loadCurrentTurn() {
   var parsedTurns = JSON.parse(localStorage.getItem('whose turn'));
   if (!parsedTurns) {
-    this.turn = 1;
+    theGame.turn = 1;
   } else {
-    this.turn = parseInt(parsedTurns);
+    theGame.turn = parseInt(parsedTurns);
   }
 }
 
