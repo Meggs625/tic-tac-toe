@@ -91,24 +91,14 @@ class Game {
       this.tiger.saveWinsToStorage();
       this.turn++;
       this.setNewGame();
-  }
-    // winningPlayer.wins++;
-    // winningPlayer.saveWinsToStorage();
-    // invoke DOM to update <h1> with winningPlayer's name
-    // Add one win to the winning player's count. (winningPlayer.wins++;)
-    // invoke the saveWinsToStorage for the winning Player
-    //Update localStorage with whose turn it is
-    //invoke setNewGame();
+      // invoke DOM to update <h1> with winningPlayer's name
+    }
   }
 
   //
   setNewGame() {
     this.storeWhoseTurn();
     location.reload();
-
-    // removing all added items,
-    // showing the updated # of wins for the players - retrievedFromStorage
-    // Displaying whose turn is next - retrievedFromStorage
   }
   storeWhoseTurn() {
     var currentTurn = JSON.stringify(this.turn);
