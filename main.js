@@ -1,6 +1,10 @@
 //Query Selectors
   var gameBoard = document.getElementById('board');
-  var sectionFive = document.getElementById('item5');
+  var playerOnesWins = document.getElementById('player-one');
+  var playerTwosWins = document.getElementById('player-two');
+  var whoseTurn = document.getElementById('whose-turn');
+  var mainSection = document.getElementById('main-section');
+
 
 //Global variables
 var theGame;
@@ -10,6 +14,9 @@ var theGame;
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
   populateSection(event)});
+mainSection.addEventListener('dblclick', resetGame);
+
+
 //Functions
 function loadGame() {
   var pig = new Player('Pig', '🐷');
@@ -17,6 +24,8 @@ function loadGame() {
   theGame = new Game(pig, tiger);
   loadPreviousWins(pig, tiger);
   loadCurrentTurn();
+  displayStoredWins();
+  displayTurn();
 }
 
 function loadPreviousWins(pig, tiger) {
@@ -33,9 +42,39 @@ function loadCurrentTurn() {
   }
 }
 
+function displayStoredWins() {
+  playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
+  playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
+}
+
+function displayTurn() {
+  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s turn!'`;
+}
+
 function populateSection(event) {
   var playerName = theGame.trackTurns().name;
-  if (!gameSectionStatus[event.target.id])
-      theGame.updateGameBoard(event.target.id, playerName);
-      // update innderHTML of the right Section to the player's token
+  var playerToken = theGame.trackTurns().token;
+  if (!gameSectionStatus[event.target.id]) {
+      theGame.updateGameBoard(event.target.id, playerName, playerToken);
+  }
+}
+
+function renderToken(event, playerToken) {
+    event.target.closest('.item').innerHTML = playerToken;
+}
+
+  function renderDraw() {
+    whoseTurn.innerHTML = 'It\'s a Draw!';
+  }
+
+  function renderWinner(playerToken) {
+    whoseTurn.innerHTML = `${playerToken} wins!!!`;
+  }
+
+  function resetGame() {
+    if (whoseTurn.innerHTML === 'It\'s a Draw!') {
+      theGame.setNewGame();
+    } else if (whoseTurn.innerHTML === `${theGame.pig.token} wins!!!` || whoseTurn.innerHTML === `${theGame.tiger.token} wins!!!`) {
+      theGame.setNewGame();
+    }
   }

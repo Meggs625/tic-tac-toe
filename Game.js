@@ -11,12 +11,18 @@ class Game {
     } else {
       return this.pig;
     }
+    resetTurns();
+}
+
+  resetTurns() {
+    if (this.turn > 50) {
+      this.turn = 1;
+    }
   }
 
-  updateGameBoard(sectionId, playerName) {
-    console.log(gameSectionStatus);
-    console.log(this.pig.wins)
+  updateGameBoard(sectionId, playerName, playerToken) {
     gameSectionStatus[sectionId] = playerName;
+    renderToken(event, playerToken);
     this.evaluateRows(playerName);
   }
 
@@ -60,8 +66,8 @@ class Game {
     if (!isGameFull) {
       this.changeTurns();
     } else {
-      this.turns++;
-      this.setNewGame();
+      this.changeTurns();
+      renderDraw();
       //localStorage for whose turn it is
       //and invoke the method to reset the Game
     }
@@ -73,28 +79,28 @@ class Game {
 
   changeTurns() {
     this.turn++;
+    displayTurn();
     //invoke the function to update to the DOM for the next player - both in the
     //heading of whose turn as well as with the icon that will be dropped
   }
 
   callAWin(playerName) {
     if (playerName === this.pig.name) {
-      console.log('Pig wins!')
       this.pig.wins++;
       this.pig.saveWinsToStorage();
       this.turn++;
-      this.setNewGame();
+      renderWinner(this.pig.token);
+      // this.setNewGame();
     // invoke DOM to update <h1> with winningPlayer's name
   } else {
-      console.log('Tiger wins!')
       this.tiger.wins++;
       this.tiger.saveWinsToStorage();
       this.turn++;
-      this.setNewGame();
+      renderWinner(this.tiger.token);
+      // this.setNewGame();
       // invoke DOM to update <h1> with winningPlayer's name
     }
   }
-
   //
   setNewGame() {
     this.storeWhoseTurn();
