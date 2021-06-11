@@ -1,52 +1,70 @@
 class Game {
   constructor(player1, player2) {
-    this.player1 = player1;
-    this.player2 = player2;
+    this.pig = player1;
+    this.tiger = player2;
     this.turn = 1;
   }
 
   trackTurns() {
-    this.turn++;
+    // this.turn++;
     if (this.turn % 2 === 0) {
-      return player2.name;
+      return this.tiger;
     } else {
-      return player1.name;
+      return this.pig;
     }
   }
 
   followingGameBoard(whichSection, whichPlayer) {
     // Update "tally" with each turn
-    // call assessWinning(currentBoard);
-    // trackTurns();
+    // call callADraw(currentBoard);
   }
 
-  assessWinning(currentBoard) {
-    // set winning conditions to check against:
-    // Winning Combos: (1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 4, 7), (2, 5, 8), (3, 6, 9), (1, 5, 9), (3, 5, 7)
-    // Invoke callingAWin passing the winning Player or
-    // evalutes to False, invoke turnTracker
-    // or, invoke callingADraw if game has no more winning moves possible
+
+  assessWinning(currentwhichPlayer) {
+    // invoke evaluateRows(whichPlayer);
+    // invoke evaluateColumns(whichPlayer);
+    // invoke evaluateDiagonals(whichPlayer);
+
+  }
+  evaluateRows(whichPlayer) {
+    // iterate through the 3 winning row comibinations
+      // (1, 4, 7), (2, 5, 8), (3, 6, 9)
+    // if all true in one comibinattion for that player, invoke callAWin
+    //else, invoke evaluateColumns(whichPlayer);
+  }
+  evaluateColumns() {
+    // iterate through the 3 winning row comibinations
+      // (1, 2, 3), (4, 5, 6), (7, 8, 9)
+    // if all true in one comibinattion for that player, invoke callAWin
+    //else, invoke evaluateDiagonals(whichPlayer);
+  }
+  evaluateDiagonals() {
+    // iterate through the 2 winning diagonal comibinations
+      // (1, 5, 9), (3, 5, 7)
+    //if all true in one combination for the player, invoke callAWin
+    // else, invoke
   }
 
-  callingAWin(winningPlayer) {
+  callADraw(currentBoard) {
+    // assess if all values
+    //Update localStorage with whose turn it is
+  }
+
+  callAWin(winningPlayer) {
     // Change <h1> to show winning player
     // Add one win to the winning player's count. (winningPlayer.wins++;)
     // invoke the saveWinsToStorage for the winning Player
     //Update localStorage with whose turn it is
+    //invoke setNewGame();
   }
 
-  callingADraw() {
-    // invoked with a certain condition in the assessWinning method
-    // none of the winningConditions are possible
-    // return "It's a Draw!" in <h1>
-    //invoke trackTurns
-    //Update localStorage with whose turn it is
-  }
 
   setNewGame() {
     // removing all added items,
     // showing the updated # of wins for the players - retrievedFromStorage
     // Displaying whose turn is next - retrievedFromStorage
   }
+
+  // where to trackTurns
 
 }
