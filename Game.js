@@ -1,52 +1,109 @@
 class Game {
   constructor(player1, player2) {
-    this.player1 = player1;
-    this.player2 = player2;
+    this.pig = player1;
+    this.tiger = player2;
     this.turn = 1;
   }
 
   trackTurns() {
-    this.turn++;
     if (this.turn % 2 === 0) {
-      return player2.name;
+      return this.tiger;
     } else {
-      return player1.name;
+      return this.pig;
     }
   }
 
-  followingGameBoard(whichSection, whichPlayer) {
-    // Update "tally" with each turn
-    // call assessWinning(currentBoard);
-    // trackTurns();
+  updateGameBoard(sectionId, playerName) {
+    console.log(gameSectionStatus);
+    console.log(this.pig.wins)
+    gameSectionStatus[sectionId] = playerName;
+    this.evaluateRows(playerName);
   }
 
-  assessWinning(currentBoard) {
-    // set winning conditions to check against:
-    // Winning Combos: (1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 4, 7), (2, 5, 8), (3, 6, 9), (1, 5, 9), (3, 5, 7)
-    // Invoke callingAWin passing the winning Player or
-    // evalutes to False, invoke turnTracker
-    // or, invoke callingADraw if game has no more winning moves possible
+  evaluateRows(playerName) {
+      if (gameSectionStatus.item1 === playerName && gameSectionStatus.item4 === playerName && gameSectionStatus.item7 === playerName) {
+        this.callAWin(playerName);
+      } else if (gameSectionStatus.item2 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item8 === playerName) {
+        this.callAWin(playerName);
+      } else if (gameSectionStatus.item3 === playerName && gameSectionStatus.item6 === playerName && gameSectionStatus.item9 === playerName) {
+        this.callAWin(playerName);
+      } else {
+        this.evaluateColumns(playerName)
+      }
+    }
+
+  evaluateColumns(playerName) {
+      if (gameSectionStatus.item1 === playerName && gameSectionStatus.item2 === playerName && gameSectionStatus.item3 === playerName) {
+      this.callAWin(playerName);
+    } else if (gameSectionStatus.item4 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item6 === playerName) {
+      this.callAWin(playerName);
+    } else if (gameSectionStatus.item7 === playerName && gameSectionStatus.item8 === playerName && gameSectionStatus.item9 === playerName) {
+      this.callAWin(playerName);
+    } else {
+      this.evaluateDiagonals(playerName)
+    }
   }
 
-  callingAWin(winningPlayer) {
-    // Change <h1> to show winning player
-    // Add one win to the winning player's count. (winningPlayer.wins++;)
-    // invoke the saveWinsToStorage for the winning Player
-    //Update localStorage with whose turn it is
+  evaluateDiagonals(playerName) {
+    if (gameSectionStatus.item1 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item9 === playerName) {
+      this.callAWin(playerName);
+    } else if (gameSectionStatus.item3 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item7 === playerName) {
+      this.callAWin(playerName);
+    } else {
+      this.callADraw()
+    }
   }
 
-  callingADraw() {
-    // invoked with a certain condition in the assessWinning method
-    // none of the winningConditions are possible
-    // return "It's a Draw!" in <h1>
-    //invoke trackTurns
-    //Update localStorage with whose turn it is
+  callADraw(currentBoard) {
+    var modifiedGame = Object.values(gameSectionStatus);
+    var isGameFull = modifiedGame.every(this.isFull);
+    if (!isGameFull) {
+      this.changeTurns();
+    } else {
+      this.turns++;
+      this.setNewGame();
+      //localStorage for whose turn it is
+      //and invoke the method to reset the Game
+    }
   }
 
+  isFull(currentValue) {
+      return (currentValue === 'Pig' || currentValue === 'Tiger');
+    }
+
+  changeTurns() {
+    this.turn++;
+    //invoke the function to update to the DOM for the next player - both in the
+    //heading of whose turn as well as with the icon that will be dropped
+  }
+
+  callAWin(playerName) {
+    if (playerName === this.pig.name) {
+      console.log('Pig wins!')
+      this.pig.wins++;
+      this.pig.saveWinsToStorage();
+      this.turn++;
+      this.setNewGame();
+    // invoke DOM to update <h1> with winningPlayer's name
+  } else {
+      console.log('Tiger wins!')
+      this.tiger.wins++;
+      this.tiger.saveWinsToStorage();
+      this.turn++;
+      this.setNewGame();
+      // invoke DOM to update <h1> with winningPlayer's name
+    }
+  }
+
+  //
   setNewGame() {
-    // removing all added items,
-    // showing the updated # of wins for the players - retrievedFromStorage
-    // Displaying whose turn is next - retrievedFromStorage
+    this.storeWhoseTurn();
+    location.reload();
   }
-
+  storeWhoseTurn() {
+    var currentTurn = JSON.stringify(this.turn);
+    localStorage.setItem('whose turn', currentTurn);
+  }
 }
+
+  // where to trackTurns
