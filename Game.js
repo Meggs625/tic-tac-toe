@@ -18,7 +18,6 @@ class Game {
     gameSectionStatus[sectionId] = playerName;
     for (var i = 0; i < winningConditions.length; i++) {
         if (winningConditions[i][sectionId] === false) {
-          console.log(winningConditions[i][sectionId])
         winningConditions[i][sectionId] = playerName;
       }
     }
@@ -27,14 +26,25 @@ class Game {
 
   evaluateRows(playerName) {
     var rowOne = Object.values(winningConditions[3]);
-    console.log(winningConditions);
+      if (rowOne.every(this.isWinner)) {
+        //add return and then move to else if statement for row 2
+      }
+
+    var rowTwo = Object.values(winningConditions[4]);
+    var rowThree = Object.values(winningConditions[5]);
+    console.log(rowOne);
     }
+
+
+  isPigWinner(currentValue) {
+    return (currentValue === 'Pig')
   }
 
-  isWinner(currentValue) {
-    currentValue === playerName;
+  ifTigerWinner(currentValue) {
+    return (currentValue === 'Tiger')
   }
 
+}
 
   // assessWinning(playerName) {
   //   // invoke evaluateRows(whichPlayer);

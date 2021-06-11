@@ -5,6 +5,7 @@
 //Global variables
 var theGame;
 
+
 //Event Listeners
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
