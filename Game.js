@@ -16,65 +16,77 @@ class Game {
 
   updateGameBoard(sectionId, playerName) {
     gameSectionStatus[sectionId] = playerName;
-    for (var i = 0; i < winningConditions.length; i++) {
-        if (winningConditions[i][sectionId] === false) {
-        winningConditions[i][sectionId] = playerName;
-      }
-    }
+    // for (var i = 0; i < winningConditions.length; i++) {
+    //     if (winningConditions[i][sectionId] === false) {
+    //     winningConditions[i][sectionId] = playerName;
+    //   }
+    // }
     this.evaluateRows(playerName);
   }
 
   evaluateRows(playerName) {
-    var rowOne = Object.values(winningConditions[3]);
-      if (rowOne.every(this.isWinner)) {
-        //add return and then move to else if statement for row 2
+      if (gameSectionStatus.item1 === playerName && gameSectionStatus.item4 === playerName && gameSectionStatus.item7 === playerName) {
+        this.callAWin(playerName);
+      } else if (gameSectionStatus.item2 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item8 === playerName) {
+        this.callAWin(playerName);
+      } else if (gameSectionStatus.item3 === playerName && gameSectionStatus.item6 === playerName && gameSectionStatus.item9 === playerName) {
+        this.callAWin(playerName);
+      } else {
+        this.evaluateColumns(playerName)
       }
-
-    var rowTwo = Object.values(winningConditions[4]);
-    var rowThree = Object.values(winningConditions[5]);
-    console.log(rowOne);
     }
+    // var rowOne = Object.values(winningConditions[3]);
+    //   if (rowOne.every(this.isPigWinner) || rowOne.every(this.isTigerWinner)) {
+    //     console.log('yes')
+    //     //add return and then move to else if statement for row 2
+    //   }
+    //
+    // var rowTwo = Object.values(winningConditions[4]);
+    // var rowThree = Object.values(winningConditions[5]);
+    // }
 
 
-  isPigWinner(currentValue) {
-    return (currentValue === 'Pig')
-  }
-
-  ifTigerWinner(currentValue) {
-    return (currentValue === 'Tiger')
-  }
-
-}
-
-  // assessWinning(playerName) {
-  //   // invoke evaluateRows(whichPlayer);
-  //   // invoke evaluateColumns(whichPlayer);
-  //   // invoke evaluateDiagonals(whichPlayer);
-  //
-  // }
-  // evaluateRows(playerName) {
-  //   // iterate through the 3 winning row comibinations
-  //     // (1, 4, 7), (2, 5, 8), (3, 6, 9)
-  //   // if all true in one comibinattion for that player, invoke callAWin
-  //   //else, invoke evaluateColumns(whichPlayer);
-  // }
-  // evaluateColumns() {
-  //   // iterate through the 3 winning row comibinations
-  //     // (1, 2, 3), (4, 5, 6), (7, 8, 9)
-  //   // if all true in one comibinattion for that player, invoke callAWin
-  //   //else, invoke evaluateDiagonals(whichPlayer);
-  // }
-  // evaluateDiagonals() {
-  //   // iterate through the 2 winning diagonal comibinations
-  //     // (1, 5, 9), (3, 5, 7)
-  //   //if all true in one combination for the player, invoke callAWin
-  //   // else, invoke
+  // isPigWinner(currentValue) {
+  //   return (currentValue === 'Pig')
   // }
   //
-  // callADraw(currentBoard) {
-  //   // assess if all values
-  //   //Update localStorage with whose turn it is
-  // }
+
+
+
+  evaluateColumns(playerName) {
+    if (gameSectionStatus.item1 === playerName && gameSectionStatus.item2 === playerName && gameSectionStatus.item3 === playerName) {
+      this.callAWin(playerName);
+    } else if (gameSectionStatus.item4 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item6 === playerName) {
+      this.callAWin(playerName);
+    } else if (gameSectionStatus.item7 === playerName && gameSectionStatus.item8 === playerName && gameSectionStatus.item9 === playerName) {
+      this.callAWin(playerName);
+    } else {
+      this.evaluateDiagonals(playerName)
+    }
+  }
+  evaluateDiagonals(playerName) {
+    if (gameSectionStatus.item1 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item9 === playerName) {
+      this.callAWin(playerName);
+    } else if (gameSectionStatus.item3 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item7 === playerName) {
+      this.callAWin(playerName);
+    } else {
+      this.callADraw()
+    }
+  }
+  //
+  callADraw(currentBoard) {
+    var modifiedGame = Object.values(gameSectionStatus);
+    var isGameFull = modifiedGame.every(this.isFull);
+    if (!isGameFull) {
+      console.log('Uh oh');
+    };
+    // assess if all values
+    //Update localStorage with whose turn it is
+  }
+
+  isFull(currentValue) {
+      return (currentValue === 'Pig' || currentValue === 'Tiger');
+    }
   //
   // callAWin(winningPlayer) {
   //   // Change <h1> to show winning player
@@ -90,5 +102,6 @@ class Game {
   //   // showing the updated # of wins for the players - retrievedFromStorage
   //   // Displaying whose turn is next - retrievedFromStorage
   // }
+}
 
   // where to trackTurns
