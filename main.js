@@ -16,11 +16,21 @@ function loadGame() {
   var tiger = new Player('Tiger', '🐯');
   theGame = new Game(pig, tiger);
   loadPreviousWins(pig, tiger);
+  loadCurrentTurn();
 }
 
 function loadPreviousWins(pig, tiger) {
   pig.retrieveWinsFromStorage();
   tiger.retrieveWinsFromStorage();
+}
+
+function loadCurrentTurn() {
+  var parsedTurns = JSON.parse(localStorage.getItem('whose turn'));
+  if (!parsedTurns) {
+    this.turn = 1;
+  } else {
+    this.turn = parseInt(parsedTurns);
+  }
 }
 
 function populateSection(event) {

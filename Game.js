@@ -61,6 +61,7 @@ class Game {
       this.changeTurns();
     } else {
       this.turns++;
+      this.setNewGame();
       //localStorage for whose turn it is
       //and invoke the method to reset the Game
     }
@@ -76,14 +77,22 @@ class Game {
     //heading of whose turn as well as with the icon that will be dropped
   }
 
-  callAWin(winningPlayer) {
-    console.log(winningPlayer);
-    console.log('game player name', this.pig)
+  callAWin(playerName) {
+    if (playerName === this.pig.name) {
+      this.pig.wins++;
+      this.pig.saveWinsToStorage();
+      this.turn++;
+      this.setNewGame();
+    // invoke DOM to update <h1> with winningPlayer's name
+  } else {
+      this.tiger.wins++;
+      this.tiger.saveWinsToStorage();
+      this.turn++;
+      this.setNewGame();
+  }
     // winningPlayer.wins++;
     // winningPlayer.saveWinsToStorage();
-    this.setNewGame();
     // invoke DOM to update <h1> with winningPlayer's name
-    // Change <h1> to show winning player
     // Add one win to the winning player's count. (winningPlayer.wins++;)
     // invoke the saveWinsToStorage for the winning Player
     //Update localStorage with whose turn it is
@@ -92,10 +101,16 @@ class Game {
 
   //
   setNewGame() {
-    console.log('Reset!')
+    this.storeWhoseTurn();
+    
+
     // removing all added items,
     // showing the updated # of wins for the players - retrievedFromStorage
     // Displaying whose turn is next - retrievedFromStorage
+  }
+  storeWhoseTurn() {
+    var currentTurn = JSON.stringify(this.turn);
+    localStorage.setItem('whose turn', currentTurn);
   }
 }
 
