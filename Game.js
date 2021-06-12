@@ -7,11 +7,12 @@ class Game {
 
   trackTurns() {
     if (this.turn % 2 === 0) {
+      this.resetTurns();
       return this.tiger;
     } else {
+      this.resetTurns();
       return this.pig;
     }
-    resetTurns();
 }
 
   resetTurns() {
@@ -69,7 +70,7 @@ class Game {
       this.changeTurns();
       renderDraw();
       this.storeWhoseTurn();
-      // setTimeout(this.setNewGame, 1000);
+      setTimeout(this.setNewGame, 1000);
       //localStorage for whose turn it is
       //and invoke the method to reset the Game
     }
