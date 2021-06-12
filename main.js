@@ -14,7 +14,6 @@ var theGame;
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
   populateSection(event)});
-mainSection.addEventListener('dblclick', resetGame);
 
 
 //Functions
@@ -43,8 +42,24 @@ function loadCurrentTurn() {
 }
 
 function displayStoredWins() {
-  playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
-  playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
+  displayPigStoredWins();
+  displayTigerStoredWins();
+}
+
+function displayTigerStoredWins() {
+  if (theGame.tiger.wins === 1) {
+    playerTwosWins.innerHTML = `${theGame.tiger.wins} Win`;
+  } else {
+    playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
+  }
+}
+
+function displayPigStoredWins() {
+  if (theGame.pig.wins === 1) {
+    playerOnesWins.innerHTML = `${theGame.pig.wins} Win`;
+  } else {
+    playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
+  }
 }
 
 function displayTurn() {
