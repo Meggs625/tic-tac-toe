@@ -63,15 +63,15 @@ function renderToken(event, playerToken) {
     event.target.closest('.item').innerHTML = playerToken;
 }
 
-  function renderDraw() {
+function renderDraw() {
     whoseTurn.innerHTML = 'It\'s a Draw!';
   }
 
-  function renderWinner(playerToken) {
+function renderWinner(playerToken) {
     whoseTurn.innerHTML = `${playerToken} wins!!!`;
   }
 
-  function resetGame() {
+function resetGame() {
     if (whoseTurn.innerHTML === 'It\'s a Draw!') {
       theGame.setNewGame();
     } else if (whoseTurn.innerHTML === `${theGame.pig.token} wins!!!` || whoseTurn.innerHTML === `${theGame.tiger.token} wins!!!`) {

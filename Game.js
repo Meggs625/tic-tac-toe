@@ -68,6 +68,8 @@ class Game {
     } else {
       this.changeTurns();
       renderDraw();
+      this.storeWhoseTurn();
+      // setTimeout(this.setNewGame, 1000);
       //localStorage for whose turn it is
       //and invoke the method to reset the Game
     }
@@ -90,6 +92,8 @@ class Game {
       this.pig.saveWinsToStorage();
       this.turn++;
       renderWinner(this.pig.token);
+      this.storeWhoseTurn();
+      setTimeout(this.setNewGame, 1000);
       // this.setNewGame();
     // invoke DOM to update <h1> with winningPlayer's name
   } else {
@@ -97,15 +101,18 @@ class Game {
       this.tiger.saveWinsToStorage();
       this.turn++;
       renderWinner(this.tiger.token);
+      this.storeWhoseTurn();
+      setTimeout(this.setNewGame, 1000);
       // this.setNewGame();
       // invoke DOM to update <h1> with winningPlayer's name
     }
   }
   //
   setNewGame() {
-    this.storeWhoseTurn();
+    // this.storeWhoseTurn();
     location.reload();
   }
+
   storeWhoseTurn() {
     var currentTurn = JSON.stringify(this.turn);
     localStorage.setItem('whose turn', currentTurn);
