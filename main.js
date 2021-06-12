@@ -14,7 +14,6 @@ var theGame;
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
   populateSection(event)});
-mainSection.addEventListener('dblclick', resetGame);
 
 
 //Functions
@@ -43,8 +42,24 @@ function loadCurrentTurn() {
 }
 
 function displayStoredWins() {
-  playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
-  playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
+  displayPigStoredWins();
+  displayTigerStoredWins();
+}
+
+function displayTigerStoredWins() {
+  if (theGame.tiger.wins === 1) {
+    playerTwosWins.innerHTML = `${theGame.tiger.wins} Win`;
+  } else {
+    playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
+  }
+}
+
+function displayPigStoredWins() {
+  if (theGame.pig.wins === 1) {
+    playerOnesWins.innerHTML = `${theGame.pig.wins} Win`;
+  } else {
+    playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
+  }
 }
 
 function displayTurn() {
@@ -63,15 +78,15 @@ function renderToken(event, playerToken) {
     event.target.closest('.item').innerHTML = playerToken;
 }
 
-  function renderDraw() {
+function renderDraw() {
     whoseTurn.innerHTML = 'It\'s a Draw!';
   }
 
-  function renderWinner(playerToken) {
+function renderWinner(playerToken) {
     whoseTurn.innerHTML = `${playerToken} wins!!!`;
   }
 
-  function resetGame() {
+function resetGame() {
     if (whoseTurn.innerHTML === 'It\'s a Draw!') {
       theGame.setNewGame();
     } else if (whoseTurn.innerHTML === `${theGame.pig.token} wins!!!` || whoseTurn.innerHTML === `${theGame.tiger.token} wins!!!`) {
