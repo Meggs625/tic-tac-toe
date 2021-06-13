@@ -73,3 +73,9 @@ function renderDraw() {
 function renderWinner(playerToken) {
   whoseTurn.innerHTML = `${playerToken} Wins!!!`;
 }
+
+
+// function stopGamePlay() {
+//   gameBoard.removeEventListener('click', function(event) {
+//   populateSection(event)});
+// }
