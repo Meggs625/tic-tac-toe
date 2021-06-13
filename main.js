@@ -1,29 +1,25 @@
 //Query Selectors
   var gameBoard = document.getElementById('board');
-  var playerOnesWins = document.getElementById('player-one');
-  var playerTwosWins = document.getElementById('player-two');
+  var playerOnesWins = document.getElementById('player-one-wins');
+  var playerTwosWins = document.getElementById('player-two-wins');
   var whoseTurn = document.getElementById('whose-turn');
-  var mainSection = document.getElementById('main-section');
-
 
 //Global variables
 var theGame;
-
 
 //Event Listeners
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
   populateSection(event)});
 
-
 //Functions
 function loadGame() {
-  var pig = new Player('Pig', '🐷');
-  var tiger = new Player('Tiger', '🐯');
+  var pig = new Player('pig', '🐷');
+  var tiger = new Player('tiger', '🐯');
   theGame = new Game(pig, tiger);
   loadPreviousWins(pig, tiger);
   loadCurrentTurn();
-  displayStoredWins();
+  displayStoredWins(pig, tiger);
   displayTurn();
 }
 
@@ -41,29 +37,21 @@ function loadCurrentTurn() {
   }
 }
 
-function displayStoredWins() {
-  displayPigStoredWins();
-  displayTigerStoredWins();
+function displayStoredWins(pig, tiger) {
+  displayPlayerStoredWins(pig, playerOnesWins);
+  displayPlayerStoredWins(tiger, playerTwosWins);
 }
 
-function displayTigerStoredWins() {
-  if (theGame.tiger.wins === 1) {
-    playerTwosWins.innerHTML = `${theGame.tiger.wins} Win`;
+function displayPlayerStoredWins(player, winDisplay) {
+  if (player.wins === 1) {
+    winDisplay.innerHTML = `${player.wins} Win`;
   } else {
-    playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
-  }
-}
-
-function displayPigStoredWins() {
-  if (theGame.pig.wins === 1) {
-    playerOnesWins.innerHTML = `${theGame.pig.wins} Win`;
-  } else {
-    playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
+    winDisplay.innerHTML = `${player.wins} Wins`;
   }
 }
 
 function displayTurn() {
-  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s turn!'`;
+  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s Turn!`;
 }
 
 function populateSection(event) {
@@ -75,21 +63,13 @@ function populateSection(event) {
 }
 
 function renderToken(event, playerToken) {
-    event.target.closest('.item').innerHTML = playerToken;
+  event.target.closest('.item').innerHTML = playerToken;
 }
 
 function renderDraw() {
-    whoseTurn.innerHTML = 'It\'s a Draw!';
-  }
+  whoseTurn.innerHTML = 'It\'s a Draw!';
+}
 
 function renderWinner(playerToken) {
-    whoseTurn.innerHTML = `${playerToken} wins!!!`;
-  }
-
-function resetGame() {
-    if (whoseTurn.innerHTML === 'It\'s a Draw!') {
-      theGame.setNewGame();
-    } else if (whoseTurn.innerHTML === `${theGame.pig.token} wins!!!` || whoseTurn.innerHTML === `${theGame.tiger.token} wins!!!`) {
-      theGame.setNewGame();
-    }
-  }
+  whoseTurn.innerHTML = `${playerToken} Wins!!!`;
+}
