@@ -62,15 +62,20 @@ h1 {
 }
 
 button {
-  background: linear-gradient(#7BC1E1, #7BC1E1, #7BC1E1);
+  background-image: linear-gradient(#7BE1D9, #7BD5E1, #7BC1E1);
   font-size: 2vh;
   padding: 2% 10%;
   border-radius:15px;
 }
 
 button:hover {
-  background: linear-gradient(#7BC1E1, #7BC1E1, #7BC1E1);
+  background: linear-gradient(#7BC1E1, #7BD5E1, #7BE1D9);
+  color: white;
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 /* ~Game board and Items~ */
