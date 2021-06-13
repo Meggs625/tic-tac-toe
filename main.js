@@ -57,7 +57,7 @@ function displayTurn() {
 function populateSection(event) {
   var playerName = theGame.trackTurns().name;
   var playerToken = theGame.trackTurns().token;
-  if (!gameSectionStatus[event.target.id]) {
+  if (!gameSectionStatus[event.target.id] && !theGame.victory) {
       theGame.updateGameBoard(event.target.id, playerName, playerToken);
   }
 }
@@ -73,9 +73,3 @@ function renderDraw() {
 function renderWinner(playerToken) {
   whoseTurn.innerHTML = `${playerToken} Wins!!!`;
 }
-
-
-// function stopGamePlay() {
-//   gameBoard.removeEventListener('click', function(event) {
-//   populateSection(event)});
-// }
