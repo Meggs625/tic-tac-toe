@@ -75,7 +75,7 @@ class Game {
   }
 
   isFull(currentValue) {
-    return (currentValue === 'Pig' || currentValue === 'Tiger');
+    return (currentValue === 'pig' || currentValue === 'tiger');
   }
 
   changeTurns() {

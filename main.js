@@ -14,12 +14,12 @@ gameBoard.addEventListener('click', function(event) {
 
 //Functions
 function loadGame() {
-  var pig = new Player('Pig', '🐷');
-  var tiger = new Player('Tiger', '🐯');
+  var pig = new Player('pig', '🐷');
+  var tiger = new Player('tiger', '🐯');
   theGame = new Game(pig, tiger);
   loadPreviousWins(pig, tiger);
   loadCurrentTurn();
-  displayStoredWins();
+  displayStoredWins(pig, tiger);
   displayTurn();
 }
 
@@ -37,24 +37,17 @@ function loadCurrentTurn() {
   }
 }
 
-function displayStoredWins() {
-  displayPigStoredWins();
-  displayTigerStoredWins();
+function displayStoredWins(pig, tiger) {
+  displayPlayerStoredWins(pig, playerOnesWins);
+  displayPlayerStoredWins(tiger, playerTwosWins);
 }
 
-function displayTigerStoredWins() {
-  if (theGame.tiger.wins === 1) {
-    playerTwosWins.innerHTML = `${theGame.tiger.wins} Win`;
+function displayPlayerStoredWins(player, winDisplay) {
+  console.log(player);
+  if (player.wins === 1) {
+    winDisplay.innerHTML = `${player.wins} Win`;
   } else {
-    playerTwosWins.innerHTML = `${theGame.tiger.wins} Wins`;
-  }
-}
-
-function displayPigStoredWins() {
-  if (theGame.pig.wins === 1) {
-    playerOnesWins.innerHTML = `${theGame.pig.wins} Win`;
-  } else {
-    playerOnesWins.innerHTML = `${theGame.pig.wins} Wins`;
+    winDisplay.innerHTML = `${player.wins} Wins`;
   }
 }
 
