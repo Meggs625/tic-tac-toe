@@ -3,18 +3,14 @@
   var playerOnesWins = document.getElementById('player-one');
   var playerTwosWins = document.getElementById('player-two');
   var whoseTurn = document.getElementById('whose-turn');
-  var mainSection = document.getElementById('main-section');
-
 
 //Global variables
 var theGame;
-
 
 //Event Listeners
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
   populateSection(event)});
-
 
 //Functions
 function loadGame() {
@@ -63,7 +59,7 @@ function displayPigStoredWins() {
 }
 
 function displayTurn() {
-  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s turn!'`;
+  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s turn!`;
 }
 
 function populateSection(event) {
@@ -75,21 +71,21 @@ function populateSection(event) {
 }
 
 function renderToken(event, playerToken) {
-    event.target.closest('.item').innerHTML = playerToken;
+  event.target.closest('.item').innerHTML = playerToken;
 }
 
 function renderDraw() {
-    whoseTurn.innerHTML = 'It\'s a Draw!';
-  }
+  whoseTurn.innerHTML = 'It\'s a Draw!';
+}
 
 function renderWinner(playerToken) {
-    whoseTurn.innerHTML = `${playerToken} wins!!!`;
-  }
+  whoseTurn.innerHTML = `${playerToken} wins!!!`;
+}
 
 function resetGame() {
-    if (whoseTurn.innerHTML === 'It\'s a Draw!') {
-      theGame.setNewGame();
-    } else if (whoseTurn.innerHTML === `${theGame.pig.token} wins!!!` || whoseTurn.innerHTML === `${theGame.tiger.token} wins!!!`) {
-      theGame.setNewGame();
-    }
+  if (whoseTurn.innerHTML === 'It\'s a Draw!') {
+    theGame.setNewGame();
+  } else if (whoseTurn.innerHTML === `${theGame.pig.token} wins!!!` || whoseTurn.innerHTML === `${theGame.tiger.token} wins!!!`) {
+    theGame.setNewGame();
   }
+}

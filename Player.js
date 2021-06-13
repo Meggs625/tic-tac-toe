@@ -17,7 +17,7 @@ class Player {
     if (!parsedWins) {
       this.wins = 0;
     } else {
-    this.wins = parsedWins;
+      this.wins = parsedWins;
+    }
   }
-}
 };
