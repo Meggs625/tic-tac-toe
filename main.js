@@ -43,7 +43,6 @@ function displayStoredWins(pig, tiger) {
 }
 
 function displayPlayerStoredWins(player, winDisplay) {
-  console.log(player);
   if (player.wins === 1) {
     winDisplay.innerHTML = `${player.wins} Win`;
   } else {
@@ -52,7 +51,7 @@ function displayPlayerStoredWins(player, winDisplay) {
 }
 
 function displayTurn() {
-  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s turn!`;
+  whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s Turn!`;
 }
 
 function populateSection(event) {

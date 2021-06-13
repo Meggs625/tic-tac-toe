@@ -13,7 +13,7 @@ class Game {
       this.resetTurns();
       return this.pig;
     }
-}
+  }
 
   resetTurns() {
     if (this.turn > 50) {
@@ -84,21 +84,12 @@ class Game {
   }
 
   callAWin(playerName) {
-    if (playerName === this.pig.name) {
-      this.pig.wins++;
-      this.pig.saveWinsToStorage();
+      this[playerName].wins++;
+      this[playerName].saveWinsToStorage();
       this.turn++;
-      renderWinner(this.pig.token);
+      renderWinner(this[playerName].token);
       this.storeWhoseTurn();
       setTimeout(this.setNewGame, 1000);
-    } else {
-      this.tiger.wins++;
-      this.tiger.saveWinsToStorage();
-      this.turn++;
-      renderWinner(this.tiger.token);
-      this.storeWhoseTurn();
-      setTimeout(this.setNewGame, 1000);
-    }
   }
 
   setNewGame() {
@@ -110,3 +101,21 @@ class Game {
     localStorage.setItem('whose turn', currentTurn);
   }
 }
+
+// callAWin(playerName) {
+//   if (playerName === this.pig.name) {
+//     this.pig.wins++;
+//     this.pig.saveWinsToStorage();
+//     this.turn++;
+//     renderWinner(this.pig.token);
+//     this.storeWhoseTurn();
+//     setTimeout(this.setNewGame, 1000);
+//   } else {
+//     this.tiger.wins++;
+//     this.tiger.saveWinsToStorage();
+//     this.turn++;
+//     renderWinner(this.tiger.token);
+//     this.storeWhoseTurn();
+//     setTimeout(this.setNewGame, 1000);
+//   }
+// }
