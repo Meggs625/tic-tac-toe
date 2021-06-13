@@ -72,13 +72,5 @@ function renderDraw() {
 }
 
 function renderWinner(playerToken) {
-  whoseTurn.innerHTML = `${playerToken} wins!!!`;
-}
-
-function resetGame() {
-  if (whoseTurn.innerHTML === 'It\'s a Draw!') {
-    theGame.setNewGame();
-  } else if (whoseTurn.innerHTML === `${theGame.pig.token} wins!!!` || whoseTurn.innerHTML === `${theGame.tiger.token} wins!!!`) {
-    theGame.setNewGame();
-  }
+  whoseTurn.innerHTML = `${playerToken} Wins!!!`;
 }
