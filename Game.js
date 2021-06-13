@@ -3,6 +3,7 @@ class Game {
     this.pig = player1;
     this.tiger = player2;
     this.turn = 1;
+    this.victory = false;
   }
 
   trackTurns() {
@@ -84,12 +85,13 @@ class Game {
   }
 
   callAWin(playerName) {
-      this[playerName].wins++;
-      this[playerName].saveWinsToStorage();
-      this.turn++;
-      renderWinner(this[playerName].token);
-      this.storeWhoseTurn();
-      setTimeout(this.setNewGame, 1000);
+    this.victory = true;
+    this[playerName].wins++;
+    this[playerName].saveWinsToStorage();
+    this.turn++;
+    renderWinner(this[playerName].token);
+    this.storeWhoseTurn();
+    setTimeout(this.setNewGame, 1000);
   }
 
   setNewGame() {
