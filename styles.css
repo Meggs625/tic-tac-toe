@@ -36,6 +36,7 @@ aside {
 .player-icon {
   font-size: 6vh;
   margin: 45px 0px;
+  text-shadow: 3px 5px 5px #7D7D7D;
 }
 
 h2 {
@@ -61,6 +62,26 @@ h1 {
   border-bottom: 6px solid black;
 }
 
+button {
+  background: linear-gradient(#7BE1D9, #7BD5E1, #7BC1E1);
+  font-size: 2vh;
+  padding: 2% 8%;
+  border-radius:15px;
+  box-shadow: 3px 5px 5px #7D7D7D;
+}
+
+button:hover {
+  background: linear-gradient(#7BC1E1, #7BD5E1, #7BE1D9);
+  transition: all 0.25s ease;
+  color: white;
+  box-shadow: -3px -5px 5px #7D7D7D;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 /* ~Game board and Items~ */
 
 .game-grid {
@@ -81,11 +102,13 @@ h1 {
 .column1,
 .column2 {
   border-right: 8px solid #7BC1E1;
+
 }
 
 .item1, .item2, .item3, .item4,
 .item5, .item6 {
   border-bottom: 8px solid #7BC1E1;
+
 }
 
 .item {
@@ -95,4 +118,5 @@ h1 {
   font-size: 10vh;
   height: 17vh;
   width: 17vh;
+  text-shadow: 3px 5px 5px #7D7D7D;
 }

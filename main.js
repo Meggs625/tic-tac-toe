@@ -3,6 +3,8 @@
   var playerOnesWins = document.getElementById('player-one-wins');
   var playerTwosWins = document.getElementById('player-two-wins');
   var whoseTurn = document.getElementById('whose-turn');
+  var centerPanel = document.getElementById('center-panel')
+  var clearHistoryBtn =document.getElementById('clear-btn');
 
 //Global variables
 var theGame;
@@ -11,6 +13,9 @@ var theGame;
 window.addEventListener('load', loadGame);
 gameBoard.addEventListener('click', function(event) {
   populateSection(event)});
+centerPanel.addEventListener('click', function(event) {
+  clearStoredHistory(event)});
+
 
 //Functions
 function loadGame() {
@@ -21,6 +26,7 @@ function loadGame() {
   loadCurrentTurn();
   displayStoredWins(pig, tiger);
   displayTurn();
+  displayBtn(pig, tiger);
 }
 
 function loadPreviousWins(pig, tiger) {
@@ -72,4 +78,17 @@ function renderDraw() {
 
 function renderWinner(playerToken) {
   whoseTurn.innerHTML = `${playerToken} Wins!!!`;
+}
+
+function displayBtn(pig, tiger) {
+  if(pig.wins >= 1 || tiger.wins >= 1) {
+    clearHistoryBtn.classList.remove("hidden");
+  }
+}
+
+function clearStoredHistory(event) {
+  if (event.target.id === 'clear-btn') {
+  localStorage.clear();
+  theGame.setNewGame();
+  }
 }

@@ -71,7 +71,7 @@ class Game {
       this.changeTurns();
       renderDraw();
       this.storeWhoseTurn();
-      setTimeout(this.setNewGame, 1000);
+      setTimeout(this.setNewGame, 1500);
     }
   }
 
@@ -91,7 +91,7 @@ class Game {
     this.turn++;
     renderWinner(this[playerName].token);
     this.storeWhoseTurn();
-    setTimeout(this.setNewGame, 1000);
+    setTimeout(this.setNewGame, 1500);
   }
 
   setNewGame() {
