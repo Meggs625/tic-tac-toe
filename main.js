@@ -1,7 +1,7 @@
 //Query Selectors
   var gameBoard = document.getElementById('board');
-  var playerOnesWins = document.getElementById('player-one');
-  var playerTwosWins = document.getElementById('player-two');
+  var playerOnesWins = document.getElementById('player-one-wins');
+  var playerTwosWins = document.getElementById('player-two-wins');
   var whoseTurn = document.getElementById('whose-turn');
 
 //Global variables
