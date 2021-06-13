@@ -39,6 +39,15 @@ aside {
   text-shadow: 3px 5px 5px #7D7D7D;
 }
 
+label,
+input {
+  font-size: 2vh;
+}
+
+.submit-btn {
+  margin: 15px;
+}
+
 h2 {
   font-size: 4vh;
   border-bottom: 5px solid black;

@@ -1,7 +1,9 @@
 //Query Selectors
   var gameBoard = document.getElementById('board');
   var playerOnesWins = document.getElementById('player-one-wins');
+  var playerOneName = document.getElementById('player-one-name');
   var playerTwosWins = document.getElementById('player-two-wins');
+  var playerTwoName = document.getElementById('player-two-name');
   var whoseTurn = document.getElementById('whose-turn');
   var centerPanel = document.getElementById('center-panel')
   var clearHistoryBtn =document.getElementById('clear-btn');
