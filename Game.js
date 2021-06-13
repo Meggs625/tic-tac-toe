@@ -75,7 +75,7 @@ class Game {
   }
 
   isFull(currentValue) {
-    return (currentValue === 'pig' || currentValue === 'tiger');
+    return(currentValue);
   }
 
   changeTurns() {
@@ -101,21 +101,3 @@ class Game {
     localStorage.setItem('whose turn', currentTurn);
   }
 }
-
-// callAWin(playerName) {
-//   if (playerName === this.pig.name) {
-//     this.pig.wins++;
-//     this.pig.saveWinsToStorage();
-//     this.turn++;
-//     renderWinner(this.pig.token);
-//     this.storeWhoseTurn();
-//     setTimeout(this.setNewGame, 1000);
-//   } else {
-//     this.tiger.wins++;
-//     this.tiger.saveWinsToStorage();
-//     this.turn++;
-//     renderWinner(this.tiger.token);
-//     this.storeWhoseTurn();
-//     setTimeout(this.setNewGame, 1000);
-//   }
-// }
