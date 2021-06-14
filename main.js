@@ -31,7 +31,6 @@ gameBoard.addEventListener('click', function(event) {
 centerPanel.addEventListener('click', function(event) {
   clearStoredHistory(event)});
 
-
 //Functions
 function loadGame() {
   var parsedPig = JSON.parse(localStorage.getItem("pig"));
