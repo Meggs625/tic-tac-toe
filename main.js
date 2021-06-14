@@ -169,7 +169,9 @@ function displayBtn(pig, tiger) {
 
 function clearStoredHistory(event) {
   if (event.target.id === 'clear-btn') {
-  localStorage.clear();
+  localStorage.removeItem('pig');
+  localStorage.removeItem('tiger');
+  localStorage.removeItem('whose turn');
   location.reload();
   }
 }
