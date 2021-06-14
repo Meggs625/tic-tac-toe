@@ -4,6 +4,17 @@ class Game {
     this.tiger = player2;
     this.turn = 1;
     this.victory = false;
+    this.gameSectionStatus = {
+      item1: false,
+      item2: false,
+      item3: false,
+      item4: false,
+      item5: false,
+      item6: false,
+      item7: false,
+      item8: false,
+      item9: false,
+    };
   }
 
   trackTurns() {
@@ -23,17 +34,17 @@ class Game {
   }
 
   updateGameBoard(sectionId, playerName, playerToken) {
-    gameSectionStatus[sectionId] = playerName;
+    this.gameSectionStatus[sectionId] = playerName;
     renderToken(event, playerToken);
     this.evaluateRows(playerName);
   }
 
   evaluateRows(playerName) {
-    if (gameSectionStatus.item1 === playerName && gameSectionStatus.item2 === playerName && gameSectionStatus.item3 === playerName) {
+    if (this.gameSectionStatus.item1 === playerName && this.gameSectionStatus.item2 === playerName && this.gameSectionStatus.item3 === playerName) {
       this.callAWin(playerName);
-    } else if (gameSectionStatus.item4 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item6 === playerName) {
+    } else if (this.gameSectionStatus.item4 === playerName && this.gameSectionStatus.item5 === playerName && this.gameSectionStatus.item6 === playerName) {
       this.callAWin(playerName);
-    } else if (gameSectionStatus.item7 === playerName && gameSectionStatus.item8 === playerName && gameSectionStatus.item9 === playerName) {
+    } else if (this.gameSectionStatus.item7 === playerName && this.gameSectionStatus.item8 === playerName && this.gameSectionStatus.item9 === playerName) {
       this.callAWin(playerName);
     } else {
       this.evaluateColumns(playerName)
@@ -41,11 +52,11 @@ class Game {
   }
 
   evaluateColumns(playerName) {
-    if (gameSectionStatus.item1 === playerName && gameSectionStatus.item4 === playerName && gameSectionStatus.item7 === playerName) {
+    if (this.gameSectionStatus.item1 === playerName && this.gameSectionStatus.item4 === playerName && this.gameSectionStatus.item7 === playerName) {
       this.callAWin(playerName);
-    } else if (gameSectionStatus.item2 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item8 === playerName) {
+    } else if (this.gameSectionStatus.item2 === playerName && this.gameSectionStatus.item5 === playerName && this.gameSectionStatus.item8 === playerName) {
       this.callAWin(playerName);
-    } else if (gameSectionStatus.item3 === playerName && gameSectionStatus.item6 === playerName && gameSectionStatus.item9 === playerName) {
+    } else if (this.gameSectionStatus.item3 === playerName && this.gameSectionStatus.item6 === playerName && this.gameSectionStatus.item9 === playerName) {
       this.callAWin(playerName);
     } else {
       this.evaluateDiagonals(playerName)
@@ -53,9 +64,9 @@ class Game {
   }
 
   evaluateDiagonals(playerName) {
-    if (gameSectionStatus.item1 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item9 === playerName) {
+    if (this.gameSectionStatus.item1 === playerName && this.gameSectionStatus.item5 === playerName && this.gameSectionStatus.item9 === playerName) {
       this.callAWin(playerName);
-    } else if (gameSectionStatus.item3 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item7 === playerName) {
+    } else if (this.gameSectionStatus.item3 === playerName && this.gameSectionStatus.item5 === playerName && this.gameSectionStatus.item7 === playerName) {
       this.callAWin(playerName);
     } else {
       this.callADraw()
@@ -63,7 +74,7 @@ class Game {
   }
 
   callADraw(currentBoard) {
-    var modifiedGame = Object.values(gameSectionStatus);
+    var modifiedGame = Object.values(this.gameSectionStatus);
     var isGameFull = modifiedGame.every(this.isFull);
     if (!isGameFull) {
       this.changeTurns();
@@ -100,7 +111,7 @@ class Game {
   }
 
   clearGameSections() {
-    gameSectionStatus = {
+    this.gameSectionStatus = {
       item1: false,
       item2: false,
       item3: false,

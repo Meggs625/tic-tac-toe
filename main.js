@@ -15,10 +15,8 @@
   var centerPanel = document.getElementById('center-panel')
   var clearHistoryBtn =document.getElementById('clear-btn');
 
-//Global variables
+//Global variable
 var theGame;
-var pig;
-var tiger;
 
 //Event Listeners
 window.addEventListener('load', loadGame);
@@ -132,7 +130,7 @@ function displayNames(pig, tiger) {
 function populateSection(event) {
   var playerName = theGame.trackTurns().title;
   var playerToken = theGame.trackTurns().token;
-  if (!gameSectionStatus[event.target.id] && !theGame.victory) {
+  if (!theGame.gameSectionStatus[event.target.id] && !theGame.victory) {
     theGame.updateGameBoard(event.target.id, playerName, playerToken);
   }
 }
