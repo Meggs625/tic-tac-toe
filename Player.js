@@ -1,23 +1,36 @@
 class Player {
-  constructor(name, token) {
+  constructor(name, title, token) {
     this.name = name;
+    this.title = title;
     this.token = token;
     this.wins = 0;
   }
 
-  saveWinsToStorage() {
-    var currentWins = JSON.stringify(this.wins);
-    var thePlayer = JSON.stringify(this.name);
-    localStorage.setItem(thePlayer, currentWins);
-  }
+  // retrievePlayerFromStorage() {
+  //   // var thePlayer = JSON.stringify(this.title);
+  //   var parsedPlayer = JSON.parse(localStorage.getItem(this.title));
+  //   this.player = parsedPlayer;
+  // }
+
+
+  savePlayerToStorage() {
+    var currentPlayer = JSON.stringify(this);
+    localStorage.setItem(this.title, currentPlayer);
+  };
+  // saveWinsToStorage() {
+  //   var currentWins = JSON.stringify(this.wins);
+  //   var thePlayer = JSON.stringify(this.name);
+  //   localStorage.setItem(thePlayer, currentWins);
+  // }
+
 
   retrieveWinsFromStorage() {
-    var thePlayer = JSON.stringify(this.name);
-    var parsedWins = JSON.parse(localStorage.getItem(thePlayer));
-    if (!parsedWins) {
+    // var thePlayer = JSON.stringify(this.title);
+    var parsedPlayer = JSON.parse(localStorage.getItem(this.title));
+    if (!parsedPlayer) {
       this.wins = 0;
     } else {
-      this.wins = parsedWins;
+      this.wins = parsedPlayer.wins;
     }
   }
 };
