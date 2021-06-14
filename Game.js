@@ -69,6 +69,7 @@ class Game {
     if (!isGameFull) {
       this.changeTurns();
     } else {
+      this.victory = true;
       this.changeTurns();
       renderDraw();
       this.storeWhoseTurn();

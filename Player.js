@@ -6,11 +6,11 @@ class Player {
     this.wins = 0;
   }
 
-  retrievePlayerFromStorage() {
-    // var thePlayer = JSON.stringify(this.title);
-    var parsedPlayer = JSON.parse(localStorage.getItem(this.title));
-    this.player = parsedPlayer;
-  }
+  // retrievePlayerFromStorage() {
+  //   // var thePlayer = JSON.stringify(this.title);
+  //   var parsedPlayer = JSON.parse(localStorage.getItem(this.title));
+  //   this.player = parsedPlayer;
+  // }
 
 
   savePlayerToStorage() {
