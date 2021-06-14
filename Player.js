@@ -7,16 +7,15 @@ class Player {
   }
 
   retrievePlayerFromStorage() {
-    var thePlayer = JSON.stringify(this.title);
-    var parsedPlayer = JSON.parse(localStorage.getItem(thePlayer));
+    // var thePlayer = JSON.stringify(this.title);
+    var parsedPlayer = JSON.parse(localStorage.getItem(this.title));
     this.player = parsedPlayer;
   }
 
 
   savePlayerToStorage() {
     var currentPlayer = JSON.stringify(this);
-    var thePlayer = JSON.stringify(this.title);
-    localStorage.setItem(thePlayer, currentPlayer);
+    localStorage.setItem(this.title, currentPlayer);
   };
   // saveWinsToStorage() {
   //   var currentWins = JSON.stringify(this.wins);
@@ -26,8 +25,8 @@ class Player {
 
 
   retrieveWinsFromStorage() {
-    var thePlayer = JSON.stringify(this.title);
-    var parsedPlayer = JSON.parse(localStorage.getItem(thePlayer));
+    // var thePlayer = JSON.stringify(this.title);
+    var parsedPlayer = JSON.parse(localStorage.getItem(this.title));
     if (!parsedPlayer) {
       this.wins = 0;
     } else {
