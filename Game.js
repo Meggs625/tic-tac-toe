@@ -71,7 +71,9 @@ class Game {
       this.changeTurns();
       renderDraw();
       this.storeWhoseTurn();
-      setTimeout(this.setNewGame, 1500);
+      this.clearGameSections();
+      setTimeout(loadNextGame, 1500);
+      // setTimeout(this.setNewGame, 1500);
     }
   }
 
@@ -87,16 +89,34 @@ class Game {
   callAWin(playerName) {
     this.victory = true;
     this[playerName].wins++;
-    this[playerName].saveWinsToStorage();
+    this[playerName].savePlayerToStorage();
     this.turn++;
     renderWinner(this[playerName].token);
     this.storeWhoseTurn();
-    setTimeout(this.setNewGame, 1500);
+    this.clearGameSections();
+    setTimeout(loadNextGame, 1500);
+    // this.setNewGame();
+    // setTimeout(this.setNewGame, 1500);
   }
 
-  setNewGame() {
-    location.reload();
-  }
+  // setNewGame() {
+  //   this.clearGameSections();
+  //   // location.reload();
+  // }
+
+  clearGameSections() {
+    gameSectionStatus = {
+      item1: false,
+      item2: false,
+      item3: false,
+      item4: false,
+      item5: false,
+      item6: false,
+      item7: false,
+      item8: false,
+      item9: false,
+    };
+}
 
   storeWhoseTurn() {
     var currentTurn = JSON.stringify(this.turn);
