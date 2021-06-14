@@ -42,11 +42,7 @@ function loadGame() {
     theGame = new Game(pig, tiger);
     hide(playerOneForm);
     hide(playerTwoForm);
-    loadCurrentTurn();
-    loadPreviousWins();
-    displayStoredWins(pig, tiger);
-    displayTurn();
-    displayBtn(pig, tiger);
+    gatherSavedData(pig, tiger);
     displayNames(pig, tiger);
   }
 }
@@ -73,11 +69,7 @@ function createPlayerTwo(event) {
 function loadNextGame() {
   clearTokens();
   theGame.victory = false;
-  loadCurrentTurn();
-  loadPreviousWins();
-  displayStoredWins(pig, tiger);
-  displayTurn();
-  displayBtn(pig, tiger);
+  gatherSavedData(pig, tiger);
 }
 
 function clearTokens() {
@@ -86,6 +78,14 @@ function clearTokens() {
       gameSections[i].innerText = '';
     }
   }
+}
+
+function gatherSavedData(pig, tiger) {
+  loadCurrentTurn();
+  loadPreviousWins();
+  displayStoredWins(pig, tiger);
+  displayTurn();
+  displayBtn(pig, tiger);
 }
 
 function loadCurrentTurn() {
@@ -119,6 +119,12 @@ function displayTurn() {
   whoseTurn.innerHTML = `It's ${theGame.trackTurns().token}'s Turn!`;
 }
 
+function displayBtn(pig, tiger) {
+  if(pig.wins >= 1 || tiger.wins >= 1) {
+    clearHistoryBtn.classList.remove("hidden");
+  }
+}
+
 function displayNames(pig, tiger) {
   playerOneNameDisplay.innerText = pig.name;
   playerTwoNameDisplay.innerText = tiger.name;
@@ -145,11 +151,6 @@ function renderWinner(playerToken) {
   whoseTurn.innerHTML = `${playerToken} Wins!!!`;
 }
 
-function displayBtn(pig, tiger) {
-  if(pig.wins >= 1 || tiger.wins >= 1) {
-    clearHistoryBtn.classList.remove("hidden");
-  }
-}
 
 function clearStoredHistory(event) {
   if (event.target.id === 'clear-btn') {

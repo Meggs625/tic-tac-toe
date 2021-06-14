@@ -75,7 +75,6 @@ class Game {
       this.storeWhoseTurn();
       this.clearGameSections();
       setTimeout(loadNextGame, 1500);
-      // setTimeout(this.setNewGame, 1500);
     }
   }
 
@@ -100,14 +99,7 @@ class Game {
     this.storeWhoseTurn();
     this.clearGameSections();
     setTimeout(loadNextGame, 1500);
-    // this.setNewGame();
-    // setTimeout(this.setNewGame, 1500);
   }
-
-  // setNewGame() {
-  //   this.clearGameSections();
-  //   // location.reload();
-  // }
 
   clearGameSections() {
     gameSectionStatus = {
@@ -121,7 +113,7 @@ class Game {
       item8: false,
       item9: false,
     };
-}
+  }
 
   storeWhoseTurn() {
     var currentTurn = JSON.stringify(this.turn);
