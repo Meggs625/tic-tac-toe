@@ -57,7 +57,7 @@ input {
 }
 
 h2 {
-  margin: 15px;
+  margin-bottom: 15px;
   font-size: 5vh;
 }
 
@@ -74,6 +74,7 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  /* text-align: center; */
   width: 50%;
   height: 100%;
 }
@@ -100,6 +101,11 @@ button:hover {
   cursor: pointer;
 }
 
+button:disabled {
+  backgroud: #7D7D7D;
+  cursor: not-allowed;
+}
+
 .hidden {
   display: none;
 }
@@ -124,13 +130,11 @@ button:hover {
 .column1,
 .column2 {
   border-right: 8px solid #7BC1E1;
-
 }
 
 .item1, .item2, .item3, .item4,
 .item5, .item6 {
   border-bottom: 8px solid #7BC1E1;
-
 }
 
 .item {
