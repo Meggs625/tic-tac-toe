@@ -29,7 +29,6 @@ class Game {
   }
 
   evaluateRows(playerName) {
-    console.log(playerName)
     if (gameSectionStatus.item1 === playerName && gameSectionStatus.item2 === playerName && gameSectionStatus.item3 === playerName) {
       this.callAWin(playerName);
     } else if (gameSectionStatus.item4 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item6 === playerName) {
@@ -72,10 +71,7 @@ class Game {
       this.victory = true;
       this.changeTurns();
       renderDraw();
-      this.storeWhoseTurn();
-      this.clearGameSections();
-      setTimeout(loadNextGame, 1500);
-      // setTimeout(this.setNewGame, 1500);
+      this.prepareForNextGame();
     }
   }
 
@@ -90,24 +86,18 @@ class Game {
 
   callAWin(playerName) {
     this.victory = true;
-    debugger
-    console.log('player', this[playerName])
     this[playerName].wins++;
-    console.log(this[playerName].wins)
     this[playerName].savePlayerToStorage();
     this.turn++;
     renderWinner(this[playerName].token);
+    this.prepareForNextGame();
+  }
+
+  prepareForNextGame() {
     this.storeWhoseTurn();
     this.clearGameSections();
     setTimeout(loadNextGame, 1500);
-    // this.setNewGame();
-    // setTimeout(this.setNewGame, 1500);
   }
-
-  // setNewGame() {
-  //   this.clearGameSections();
-  //   // location.reload();
-  // }
 
   clearGameSections() {
     gameSectionStatus = {
@@ -121,7 +111,7 @@ class Game {
       item8: false,
       item9: false,
     };
-}
+  }
 
   storeWhoseTurn() {
     var currentTurn = JSON.stringify(this.turn);
