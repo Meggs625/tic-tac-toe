@@ -37,51 +37,35 @@ function loadGame() {
   var parsedPig = JSON.parse(localStorage.getItem("pig"));
   var parsedTiger = JSON.parse(localStorage.getItem("tiger"));
   if (parsedPig && parsedTiger) {
-  pig = new Player(parsedPig.name, parsedPig. title, parsedPig.token);
-  tiger = new Player(parsedTiger.name, parsedTiger.title, parsedTiger.token);
-  theGame = new Game(pig, tiger);
-  playerOneForm.classList.add('hidden');
-  playerTwoForm.classList.add('hidden');
-  loadCurrentTurn();
-  loadPreviousWins();
-  displayStoredWins(pig, tiger);
-  displayTurn();
-  displayBtn(pig, tiger);
-  displayNames(pig, tiger);
-} else {
-  whoseTurn.innerText = 'Welcome! Enter Player One\'s Name';
-  playerOnesWins.innerText = '0 Wins';
-  playerTwosWins.innerText= '0 Wins';
+    pig = new Player(parsedPig.name, parsedPig. title, parsedPig.token);
+    tiger = new Player(parsedTiger.name, parsedTiger.title, parsedTiger.token);
+    theGame = new Game(pig, tiger);
+    hide(playerOneForm);
+    hide(playerTwoForm);
+    loadCurrentTurn();
+    loadPreviousWins();
+    displayStoredWins(pig, tiger);
+    displayTurn();
+    displayBtn(pig, tiger);
+    displayNames(pig, tiger);
+  }
 }
-}
-  //if localStorage has value for pig and tiger, load that information
-  //and h1 reads 'Welcome back!'
-  //else,
-
-// function loadGame() {
-//   var pig = new Player('pig', '🐷');
-//   var tiger = new Player('tiger', '🐯');
-//   theGame = new Game(pig, tiger);
-//   loadPreviousWins(pig, tiger);
-//   loadCurrentTurn();
-//   displayStoredWins(pig, tiger);
-//   displayTurn();
-//   displayBtn(pig, tiger);
-// }
 
 function createPlayerOne(event) {
   event.preventDefault(event);
-  playerOneForm.classList.add('hidden');
+  hide(playerOneForm);
   playerOneNameDisplay.innerText = playerOneName.value;
   pig = new Player(playerOneName.value, 'pig', '🐷');
+  pig.savePlayerToStorage();
   playerTwoSubmitBtn.disabled = false;
 }
 
 function createPlayerTwo(event) {
   event.preventDefault(event);
-  playerTwoForm.classList.add('hidden');
+  hide(playerTwoForm);
   playerTwoNameDisplay.innerText = playerTwoName.value;
   tiger = new Player(playerTwoName.value, 'tiger', '🐯');
+  tiger.savePlayerToStorage();
   theGame = new Game(pig, tiger);
   displayTurn();
 }
@@ -89,8 +73,8 @@ function createPlayerTwo(event) {
 function loadNextGame() {
   clearTokens();
   theGame.victory = false;
-  loadPreviousWins();
   loadCurrentTurn();
+  loadPreviousWins();
   displayStoredWins(pig, tiger);
   displayTurn();
   displayBtn(pig, tiger);
@@ -104,11 +88,6 @@ function clearTokens() {
   }
 }
 
-function loadPreviousWins() {
-  pig.retrieveWinsFromStorage();
-  tiger.retrieveWinsFromStorage();
-}
-
 function loadCurrentTurn() {
   var parsedTurns = JSON.parse(localStorage.getItem('whose turn'));
   if (!parsedTurns) {
@@ -116,6 +95,11 @@ function loadCurrentTurn() {
   } else {
     theGame.turn = parseInt(parsedTurns);
   }
+}
+
+function loadPreviousWins() {
+  pig.retrieveWinsFromStorage();
+  tiger.retrieveWinsFromStorage();
 }
 
 function displayStoredWins(pig, tiger) {
@@ -174,4 +158,8 @@ function clearStoredHistory(event) {
   localStorage.removeItem('whose turn');
   location.reload();
   }
+}
+
+function hide(element) {
+  element.classList.add('hidden');
 }
