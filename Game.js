@@ -29,7 +29,6 @@ class Game {
   }
 
   evaluateRows(playerName) {
-    console.log(playerName)
     if (gameSectionStatus.item1 === playerName && gameSectionStatus.item2 === playerName && gameSectionStatus.item3 === playerName) {
       this.callAWin(playerName);
     } else if (gameSectionStatus.item4 === playerName && gameSectionStatus.item5 === playerName && gameSectionStatus.item6 === playerName) {
@@ -87,10 +86,7 @@ class Game {
 
   callAWin(playerName) {
     this.victory = true;
-    debugger
-    console.log('player', this[playerName])
     this[playerName].wins++;
-    console.log(this[playerName].wins)
     this[playerName].savePlayerToStorage();
     this.turn++;
     renderWinner(this[playerName].token);

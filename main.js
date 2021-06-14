@@ -130,7 +130,6 @@ function displayNames(pig, tiger) {
   playerTwoNameDisplay.innerText = tiger.name;
 }
 
-
 function populateSection(event) {
   var playerName = theGame.trackTurns().title;
   var playerToken = theGame.trackTurns().token;
@@ -150,7 +149,6 @@ function renderDraw() {
 function renderWinner(playerToken) {
   whoseTurn.innerHTML = `${playerToken} Wins!!!`;
 }
-
 
 function clearStoredHistory(event) {
   if (event.target.id === 'clear-btn') {
