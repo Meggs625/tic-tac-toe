@@ -72,9 +72,7 @@ class Game {
       this.victory = true;
       this.changeTurns();
       renderDraw();
-      this.storeWhoseTurn();
-      this.clearGameSections();
-      setTimeout(loadNextGame, 1500);
+      this.prepareForNextGame();
     }
   }
 
@@ -96,6 +94,10 @@ class Game {
     this[playerName].savePlayerToStorage();
     this.turn++;
     renderWinner(this[playerName].token);
+    this.prepareForNextGame();
+  }
+
+  prepareForNextGame() {
     this.storeWhoseTurn();
     this.clearGameSections();
     setTimeout(loadNextGame, 1500);
