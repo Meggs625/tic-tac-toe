@@ -22,7 +22,7 @@ body {
   width: 100%;
 }
 
-/*~Wins Display for both Players~*/
+/*~Player Display (for both Players)~*/
 
 aside {
   display: flex;
@@ -67,7 +67,7 @@ h3 {
   padding: 5px 0px;
 }
 
-/* ~Middle Section~ */
+/* ~Center Panel~ */
 
 main {
   display: flex;
@@ -101,7 +101,7 @@ button:hover {
 }
 
 button:disabled {
-  backgroud: #7D7D7D;
+  background: #7D7D7D;
   cursor: not-allowed;
 }
 
