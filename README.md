@@ -4,7 +4,7 @@
   Take a break from the day to day and play a rousing game of Tic-Tac-Toe! It's great for all ages. You and one competitor can face off , track your wins, and see who leaves victorious.
 
 ## Contributors
-  Megan McBride - Frontend Development student at Turing
+  Megan McBride - Frontend Development student at Turing School of Software and Design
 
 ## Project Manager
   Heather Faerber
@@ -51,18 +51,17 @@
   * [HTML Color Codes](https://htmlcolorcodes.com/)
 
 ## Project Specs
+
   The full information on the project can be found [here](https://frontend.turing.edu/projects/module-1/tic-tac-toe-solo.html)
 
-## Challenges and Wins
-
-   Challenges:  
+## Challenges
     1. At first, it was difficult to decide on the structure of tracking the actions on the game board. I started by creating a large array of all the different winning conditions. After distilling that down to one object literal, it became a lot easier to visualize.
 
     2. Local storage was a sticking point for me after I changed from only storing the turns and the wins to storing object literals of the players. This caused a lot of trial and error and the realization that even though I retrieved and parsed the object from localStorage, it did not immediately instantiate as an instance of the Player class.
 
     3. Finding something new each time I read through the project specifications and realizing that although a certain part was not applicable the first read through, after working through some code, I made a mistake against what was outlined in the spec. I would then have to go back and made updates. For example: I forgot that it stated to only have one global variable for the game. Organically, I had made more than one global variable...
 
-    Wins:
+## Wins
     1. There were a lot of pieces that clicked into place for me through trial and error on this project. As I stated in the Challenges, localStorage was still mysterious to me. However, after having worked through those challenges, I feel I have gained a better understanding.
 
     2. A big win was not getting truly stuck in any particular part. Although I spent more time than I would have liked on one or two aspects, I was always making some kind of progress, however small. With each console.log and search through my notes, I was able to locate that problem, fix it, and then move on to troubleshoot the next problem.
