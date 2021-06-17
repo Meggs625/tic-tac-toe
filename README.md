@@ -33,7 +33,7 @@
   ![New-Recording-6_14_2021_-2_10_57-PM](https://user-images.githubusercontent.com/78767067/121958594-15e6e380-cd21-11eb-9574-324589064c39.gif)
 
 ## Deployed Page
-  Coming Soon
+  Play the game [here](https://meggs625.github.io/tic-tac-toe/)!
 
 ## Possible Future Extensions
   In the future, a user might look forward to:
